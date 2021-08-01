@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Truck Services</h2>
+        <button class="addtruck" onclick="openAddTruckForm()">Add Truck</button>
+        <button class="createparcel" onclick="openCreateParcelForm()">Create Parcel</button>
+        <button class="laodunloadP" onclick="openLoadUnloadForm()">Load/Unload Parcel</button>
+        <button class="parcelandTruckWeight" onclick="openGetTruckDetailForm()">Get Truck Data</button>
+
+    </div>
+
+    <div class="form-popup" id="myAddTruckForm">
+
+        <form action="/createTruck" class="form-container" method="POST">
+            <h1>Create Tuck</h1>
+            <label for="truckId">Truck ID:</label>
+            <input type="text" id="truckId" name="truckId" placeholder="Enter Truck ID">
+            <input type="submit" class="btn" value="Add Truck">
+            <button type="button" class="btn cancel" onclick="closeAddTruckForm()">Close</button>
+        </form>
+    </div>
+
+
+    <div class="form-popup" id="myCreateParcelForm">
+        <form action="/createParcel" class="form-container" method="POST">
+            <h1>Create Parcel</h1>
+            <label for="parcelId">Parcel ID:</label>
+            <input type="text" id="parcelId" name="parcelId" placeholder="Enter Parcel ID">
+            <label for="parcelWeight">Parcel Weight:</label>
+            <input type="text" id="parcelWeight" name="parcelWeight" placeholder="Enter Parcel weight">
+            <input type="submit" class="btn" value="Create Parcel">
+            <button type="button" class="btn cancel" onclick="closeCreateParcelForm()">Close</button>
+        </form>
+    </div>
+
+    <div class="form-popup" id="myLoadUnlaodForm">
+
+        <form name="loadUnloadParcelForm" action="/unload" class="form-container" method="POST">
+            <h1>Load & Unload Parcel </h1>
+              <label for="parcelId">Parcel ID:</label>
+              <input type="text" id="parcelId" name="parcelId" placeholder="Enter Parcel ID">
+             
+              <label for="truckId">Truck ID:</label>
+              <input type="text" id="truckId" name="truckId" placeholder="Enter Truck Id">
+
+            <input type="submit" class="btn" value="Load Parcel" onclick="return loadParcel();">
+            <input type="submit" class="btn" value="Unload Parcel" onclick="return unloadParcel();">
+            <button type="button" class="btn cancel" onclick="closeLoadUnloadForm()">Close</button>
+                    
+        </form>
+    </div>
+
+    <div class="form-popup" id="getTruckDetailsForm">
+
+        <form name="truckParcelDetails" action="/parcelCount" class="form-container" method="POST">
+            <h1>Loaded Parcel details</h1>
+             
+              <label for="truckId">Truck ID:</label>
+              <input type="text" id="truckId" name="truckId" placeholder="Enter Truck Id">
+            <input type="submit" class="btn" value="Get Truck Data" onclick="return loadParcel();">
+            <button type="button" class="btn cancel" onclick="closeGetTruckDetailForm()">Close</button>
+                    
+        </form>
+
+
+    </div>
+
+
+</body>
+
+</html>
